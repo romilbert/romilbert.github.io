@@ -101,16 +101,14 @@
         <p style="font-size: 120%;text-align: justify;">
           I am a CIFRE PhD student working with the LIPADE lab at Paris Descartes University and the Noah's Ark Lab at Huawei Technologies France, co-advised by <a href="https://ievred.github.io" target="_blank">Ievgen Redko</a> and 
           <a href="https://helios2.mi.parisdescartes.fr/~themisp/" target="_blank">Themis Palpanas</a>. 
-          My work delves deeply into the realm of time series analysis, with a particular emphasis on classification and forecasting tasks. 
-          In the initial phase of my doctoral research, I delved into methods for data augmentation and the synthetic generation of time series 
-          to address the challenges of extensive labeling and data cleaning. 
-          Progressing further, my focus shifted towards the exploration of adversarial attacks, where I developed cutting-edge attack strategies 
-          alongside robust defense mechanisms. Subsequently, my attention turned to forecasting in time series, 
-          particularly investigating the limitations of transformers in this context and strategizing on enhancing their performance. 
-          Currently, my research is centered on leveraging the capabilities of Large Language Models for forecasting in time series analysis.
-          My work, while centered on time series classification and forecasting, can be readily adapted to other fields like computer vision or NLP. 
-          Previously, I earned an engineering diploma in Data Science, Statistics and Learning from <a href="https://www.ensae.fr/en" target="_blank">ENSAE</a> and 
-          a Machine Learning Research Master degree from <a href="https://www.ip-paris.fr/en/education/masters/applied-mathematics-and-statistics-program/master-year-2-data-science" target="_blank">Ecole Polytechnique</a>.
+          My research focuses extensively on time series analysis, with a particular emphasis on classification and forecasting tasks. 
+          In the initial phase of my doctoral research, I explored methods for data augmentation and the synthetic generation of time series to address the challenges of extensive labeling and data cleaning. 
+          Progressing further, my focus shifted towards adversarial attacks, where I developed cutting-edge attack strategies alongside robust defense mechanisms. 
+          Subsequently, I focused on time series forecasting, particularly investigating the limitations of transformers in this context and strategizing on enhancing their performance. 
+          This effort led to the development of SAMformer, a new state-of-the-art model in time series forecasting, excelling in both performance and training time.
+          Currently, my research is centered on the development of foundation models for multivariate time series classification. My work, while centered on time series classification and forecasting, can be readily adapted to other fields like computer vision or NLP.
+          Previously, I earned an engineering diploma in Data Science, Statistics and Learning from <a href="https://www.ensae.fr/en" target="_blank">ENSAE</a> 
+          and a Master’s degree in Machine Learning Research from <a href="https://www.ip-paris.fr/en/education/masters/applied-mathematics-and-statistics-program/master-year-2-data-science" target="_blank">Ecole Polytechnique</a>.
         </p>
     
 
@@ -148,6 +146,162 @@
 
         </div>
       </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+          <h3>Publications</h3>
+    
+      <!-- SAMformer-->
+     <div class="row">
+            <div class="col-xs-10 col-sm-4 col-md-4">
+              <a href="samformer/index.html">
+        <img class="img-thumbnail mb-3" src="samformer/image.png" alt="SAMformer: Unlocking the Potential of Transformers in Time Series Forecasting with Sharpness-Aware Minimization and Channel-Wise Attention">
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8" style="font-size: 120%;">
+              <strong>SAMformer: Unlocking the Potential of Transformers in Time Series Forecasting with Sharpness-Aware Minimization and Channel-Wise Attention</strong><br>
+          <u>Romain Ilbert</u>, Ambroise Odonnat, Vasilli Feofanov, Aladdin Virmaux, Giuseppe Paolo, Themis Palpanas and Ievgen Redko<br>
+          ICML 2024 (Oral) <br>
+              <a target="_blank" href="https://arxiv.org/abs/2402.10198"> <button type="button" class="btn btn-primary btn-sm"> Paper </button></a>
+              <a target="_blank" href="samformer/index.html"> <button type="button" class="btn btn-primary btn-sm"> Webpage </button></a>
+          <a target="_blank" href="https://github.com/romilbert/samformer"> <button type="button" class="btn btn-primary btn-sm"> Code </button></a>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#bibtex21">BibTex</button>
+              <div id="bibtex21" class="collapse">
+        <pre><tt>@inproceedings{
+            ilbert2024samformer,
+            title={{SAM}former: Unlocking the Potential of Transformers in Time Series Forecasting with Sharpness-Aware Minimization and Channel-Wise Attention},
+            author={Romain Ilbert and Ambroise Odonnat and Vasilii Feofanov and Aladin Virmaux and Giuseppe Paolo and Themis Palpanas and Ievgen Redko},
+            booktitle={Forty-first International Conference on Machine Learning},
+            year={2024},
+            url={https://openreview.net/forum?id=8kLzL5QBh2}
+            }</tt></pre>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#abstract21">Abstract</button>
+              <div id="abstract21" class="collapse">
+        <p class="bg-light">
+            Transformer-based architectures achieved breakthrough performance in natural language processing and computer vision, yet they remain inferior to simpler linear baselines in multivariate long-term forecasting. 
+            To better understand this phenomenon, we start by studying a toy linear forecasting problem for which we show that transformers are incapable of converging to their true solution despite their high expressive power. 
+            We further identify the attention of transformers as being responsible for this low generalization capacity. 
+            Building upon this insight, we propose a shallow lightweight transformer model that successfully escapes bad local minima when optimized with sharpness-aware optimization. 
+            We empirically demonstrate that this result extends to all commonly used real-world multivariate time series datasets. 
+            In particular, SAMformer surpasses current state-of-the-art methods and is on par with the biggest foundation model MOIRAI while having significantly fewer parameters. 
+            The code is available at https://github.com/romilbert/samformer.
+        </p>
+              </div>
+              <div style="height:30px;"></div>
+            </div>
+          </div>
+    
+      <!-- Multitask -->
+      <div class="row">
+            <div class="col-xs-10 col-sm-4 col-md-4">
+              <a href="multitask/index.html">
+        <img class="img-thumbnail mb-3" src="multitask/image.png" alt="Analysing Multi-Task Regression via Random Matrix Theory with Application to Time Series Forecasting">
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8" style="font-size: 120%;">
+              <strong>Analysing Multi-Task Regression via Random Matrix Theory with Application to Time Series Forecasting</strong><br>
+              <u>Romain Ilbert</u>, Malik Tiomoko, Cosme Louart, Ambroise Odonnat, Vasilii Feofanov, Themis Palpanas and Ievgen Redko<br>
+          Under review
+          <br>
+              <a target="_blank" href="https://arxiv.org/abs/2406.10327"> <button type="button" class="btn btn-primary btn-sm"> Paper </button></a>
+              <a target="_blank" href="multitask/index.html"> <button type="button" class="btn btn-primary btn-sm"> Webpage </button></a>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#abstract20">Abstract</button>
+              <div id="abstract20" class="collapse">
+        <p class="bg-light">
+            In this paper, we introduce a novel theoretical framework for multi-task regression, applying random matrix theory to provide precise performance estimations, under high-dimensional, non-Gaussian data distributions. 
+            We formulate a multi-task optimization problem as a regularization technique to enable single-task models to leverage multi-task learning information. 
+            We derive a closed-form solution for multi-task optimization in the context of linear models. Our analysis provides valuable insights by linking the multi-task learning performance to various model statistics such as raw data covariances, signal-generating hyperplanes, noise levels, as well as the size and number of datasets. 
+            We finally propose a consistent estimation of training and testing errors, thereby offering a robust foundation for hyperparameter optimization in multi-task regression scenarios. 
+            Experimental validations on both synthetic and real-world datasets in regression and multivariate time series forecasting demonstrate improvements on univariate models, incorporating our method into the training loss and thus leveraging multivariate information.
+        </p>
+              </div>
+              <div style="height:30px;"></div>
+            </div>
+          </div>
+    
+      <!-- Augmentation -->
+      <div class="row">
+            <div class="col-xs-10 col-sm-4 col-md-4">
+        <img class="img-thumbnail mb-3" src="augmentation/image.png" alt="Data Augmentation for Multivariate Time Series Classification: An Experimental Study">
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8" style="font-size: 120%;">
+              <strong>Data Augmentation for Multivariate Time Series Classification: An Experimental Study</strong><br>
+          <u>Romain Ilbert</u>, Thai V. Hoang, Zonghua Zhang <br>
+          Workshop on Multivariate Time Series Analytics (MulTiSA), ICDE Workshop <br>
+          <a target="_blank" href="https://arxiv.org/abs/2406.06518"> <button type="button" class="btn btn-primary btn-sm"> Paper </button></a>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#bibtex19">BibTex</button>
+              <div id="bibtex19" class="collapse">
+        <pre><tt>@misc{ilbert2024data,
+        title={Data Augmentation for Multivariate Time Series Classification: An Experimental Study}, 
+        author={Romain Ilbert and Thai V. Hoang and Zonghua Zhang},
+        year={2024},
+        eprint={2406.06518},
+        archivePrefix={arXiv},
+        primaryClass={id='cs.LG' full_name='Machine Learning' is_active=True alt_name=None in_archive='cs' is_general=False description='Papers on all aspects of machine learning research (supervised, unsupervised, reinforcement learning, bandit problems, and so on) including also robustness, explanation, fairness, and methodology. cs.LG is also an appropriate primary category for applications of machine learning methods.'}
+    }
+    }</tt></pre>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#abstract19">Abstract</button>
+              <div id="abstract19" class="collapse">
+        <p class="bg-light">
+            Our study investigates the impact of data augmentation on the performance of multivariate time series models, focusing on datasets from the UCR archive. 
+            Despite the limited size of these datasets, we achieved classification accuracy improvements in 10 out of 13 datasets using the Rocket and InceptionTime models. 
+            This highlights the essential role of sufficient data in training effective models, paralleling the advancements seen in computer vision. 
+            Our work delves into adapting and applying existing methods in innovative ways to the domain of multivariate time series classification. 
+            Our comprehensive exploration of these techniques sets a new standard for addressing data scarcity in time series analysis, emphasizing that diverse augmentation strategies are crucial for unlocking the potential of both traditional and deep learning models. 
+            Moreover, by meticulously analyzing and applying a variety of augmentation techniques, we demonstrate that strategic data enrichment can enhance model accuracy. 
+            This not only establishes a benchmark for future research in time series analysis but also underscores the importance of adopting varied augmentation approaches to improve model performance in the face of limited data availability.
+        </p>
+              </div>
+              <div style="height:30px;"></div>
+            </div>
+          </div>
+    
+      <!-- Boundaries -->
+      <div class="row">
+            <div class="col-xs-10 col-sm-4 col-md-4">
+        <img class="img-thumbnail mb-3" src="boundaries/image.png" alt="Breaking Boundaries: Balancing Performance and Robustness in Deep Wireless Traffic Forecasting">
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8" style="font-size: 120%;">
+              <strong>Breaking Boundaries: Balancing Performance and Robustness in Deep Wireless Traffic Forecasting</strong><br>
+          <u>ROmain Ilbert</u>, Thai V. Hoang, Zonghua Zhang and Themis Palpanas <br>
+          Workshop on Recent Advances in Resilient and Trustworthy ML Systems in Autonomous Networks (ARTMAN), ACM-CCS Workshop <br>
+          <!-- International Conference on 3D Vision -->
+          <a target="_blank" href="https://arxiv.org/abs/2311.09790"> <button type="button" class="btn btn-primary btn-sm"> Paper </button></a>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#bibtex18">BibTex</button>
+              <div id="bibtex18" class="collapse">
+        <pre><tt>@inproceedings{10.1145/3605772.3624002, 
+            author = {Ilbert, Romain and Hoang, Thai V. and Zhang, Zonghua and Palpanas, Themis}, 
+            title = {Breaking Boundaries: Balancing Performance and Robustness in Deep Wireless Traffic Forecasting}, 
+            year = {2023}, 
+            isbn = {9798400702655}, 
+            publisher = {Association for Computing Machinery}, 
+            address = {New York, NY, USA}, 
+            url = {https://doi.org/10.1145/3605772.3624002}, 
+            doi = {10.1145/3605772.3624002}, 
+            abstract = {Balancing the trade-off between accuracy and robustness is a long-standing challenge in time series forecasting. While most of existing robust algorithms have achieved certain suboptimal performance on clean data, sustaining the same performance level in the presence of data perturbations remains extremely hard. In this paper, we study a wide array of perturbation scenarios and propose novel defense mechanisms against adversarial attacks using real-world telecom data. We compare our strategy against two existing adversarial training algorithms under a range of maximal allowed perturbations, defined using ell_infty -norm, in [0.1,0.4]. Our findings reveal that our hybrid strategy, which is composed of a classifier to detect adversarial examples, a denoiser to eliminate noise from the perturbed data samples, and a standard forecaster, achieves the best performance on both clean and perturbed data. Our optimal model can retain up to 92.02\% the performance of the original forecasting model in terms of Mean Squared Error (MSE) on clean data, while being more robust than the standard adversarially trained models on perturbed data. Its MSE is 2.71\texttimes{} and 2.51\texttimes{} lower than those of comparing methods on normal and perturbed data, respectively. In addition, the components of our models can be trained in parallel, resulting in better computational efficiency. Our results indicate that we can optimally balance the trade-off between the performance and robustness of forecasting models by improving the classifier and denoiser, even in the presence of sophisticated and destructive poisoning attacks.}, 
+            booktitle = {Proceedings of the 2023 Workshop on Recent Advances in Resilient and Trustworthy ML Systems in Autonomous Networks}, 
+            pages = {17–28}, 
+            numpages = {12}, 
+            keywords = {robustness, poisoning, performance, forecasting, denoising, components, classification}, 
+            location = {, Copenhagen, Denmark, }, 
+            series = {ARTMAN '23} }
+    }</tt></pre>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#abstract18">Abstract</button>
+              <div id="abstract18" class="collapse">
+        <p class="bg-light">
+            Balancing the trade-off between accuracy and robustness is a long-standing challenge in time series forecasting. While most of existing robust algorithms have achieved certain suboptimal performance on clean data, sustaining the same performance level in the presence of data perturbations remains extremely hard. In this paper, we study a wide array of perturbation scenarios and propose novel defense mechanisms against adversarial attacks using real-world telecom data. We compare our strategy against two existing adversarial training algorithms under a range of maximal allowed perturbations, defined using ℓ∞-norm, ∈[0.1,0.4]. Our findings reveal that our hybrid strategy, which is composed of a classifier to detect adversarial examples, a denoiser to eliminate noise from the perturbed data samples, and a standard forecaster, achieves the best performance on both clean and perturbed data. Our optimal model can retain up to 92.02% the performance of the original forecasting model in terms of Mean Squared Error (MSE) on clean data, while being more robust than the standard adversarially trained models on perturbed data. Its MSE is 2.71× and 2.51× lower than those of comparing methods on normal and perturbed data, respectively. In addition, the components of our models can be trained in parallel, resulting in better computational efficiency. Our results indicate that we can optimally balance the trade-off between the performance and robustness of forecasting models by improving the classifier and denoiser, even in the presence of sophisticated and destructive poisoning attacks.
+        </p>
+              </div>
+              <div style="height:30px;"></div>
+            </div>
+          </div>
+    </div>
 
     </div> <!-- /container -->
 
