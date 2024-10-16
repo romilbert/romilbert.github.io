@@ -169,9 +169,19 @@ span.badge.badge-2023 {
   color: #fff;
 }
 
+span.badge.badge-2022 {
+  background-color: #d56398 !important;
+  color: #fff;
+}
+
 /* Badge pour 2021 */
 .badge-2021 {
   background-color: #dc3545; /* Rouge */
+  color: #fff;
+}
+
+span.badge.badge-2021 {
+  background-color: #dc3545 !important;
   color: #fff;
 }
   
