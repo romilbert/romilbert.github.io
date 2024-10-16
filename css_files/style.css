@@ -154,12 +154,12 @@ span.badge.badge-2024 {
 
 /* Badge pour 2023 */
 .badge-2023 {
-  background-color: #844b96; /* Vert */
+  background-color: #845492; /* Vert */
   color: #fff;
 }
 
 span.badge.badge-2023 {
-  background-color: #844b96 !important;
+  background-color: #845492 !important;
   color: #fff;
 }
 
@@ -176,34 +176,34 @@ span.badge.badge-2022 {
 
 /* Badge pour 2021 */
 .badge-2021 {
-  background-color: #3546dc; /* Rouge */
+  background-color: #6e78d9; /* Rouge */
   color: #fff;
 }
 
 span.badge.badge-2021 {
-  background-color: #3546dc !important;
+  background-color: #6e78d9 !important;
   color: #fff;
 }
 
 /* Badge pour 2020 */
 .badge-2020 {
-  background-color: #d6878f; /* Rouge */
+  background-color: #d4949b; /* Rouge */
   color: #fff;
 }
 
 span.badge.badge-2020 {
-  background-color: #d6878f !important;
+  background-color: #d4949b !important;
   color: #fff;
 }
 
 
 /* Badge pour 2019 */
 .badge-2019 {
-  background-color: #358edc; /* Rouge */
+  background-color: #67a4da; /* Rouge */
   color: #fff;
 }
 
 span.badge.badge-2019 {
-  background-color: #358edc !important;
+  background-color: #67a4da !important;
   color: #fff;
 }
