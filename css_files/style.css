@@ -154,12 +154,12 @@ span.badge.badge-2024 {
 
 /* Badge pour 2023 */
 .badge-2023 {
-  background-color: #720693; /* Vert */
+  background-color: #844b96; /* Vert */
   color: #fff;
 }
 
 span.badge.badge-2023 {
-  background-color: #720693 !important;
+  background-color: #844b96 !important;
   color: #fff;
 }
 
@@ -187,12 +187,12 @@ span.badge.badge-2021 {
 
 /* Badge pour 2020 */
 .badge-2020 {
-  background-color: #dc3545; /* Rouge */
+  background-color: #d6878f; /* Rouge */
   color: #fff;
 }
 
 span.badge.badge-2020 {
-  background-color: #dc3545 !important;
+  background-color: #d6878f !important;
   color: #fff;
 }
 
