@@ -143,19 +143,19 @@ body {
 
 /* Badge pour 2024 */
 .badge-2024 {
-  background-color: #007bff; /* Bleu par défaut */
+  background-color: #7141e27b; /* Bleu par défaut */
   color: #fff;
 }
 
 /* Badge pour 2023 */
 .badge-2023 {
-  background-color: #28a745; /* Vert */
+  background-color: #720693; /* Vert */
   color: #fff;
 }
 
 /* Badge pour 2022 */
 .badge-2022 {
-  background-color: #ffc107; /* Jaune */
+  background-color: #d56398; /* Jaune */
   color: #fff;
 }
 
