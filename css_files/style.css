@@ -207,3 +207,8 @@ span.badge.badge-2019 {
   background-color: #67a4da !important;
   color: #fff;
 }
+
+#interactiveCanvas {
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
