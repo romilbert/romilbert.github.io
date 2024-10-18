@@ -1,28 +1,49 @@
-const svg = d3.select("#interactiveCanvas")
-  .append("svg")
-  .attr("width", 300)
-  .attr("height", 600);
+const canvas = document.getElementById("interactiveCanvas");
+const ctx = canvas.getContext("2d");
 
-const nodes = d3.range(50).map(function(d) {
-  return {radius: Math.random() * 12 + 4};
-});
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
 
-const simulation = d3.forceSimulation(nodes)
-  .force("charge", d3.forceManyBody().strength(-50))
-  .force("center", d3.forceCenter(150, 300))
-  .force("collision", d3.forceCollide().radius(function(d) { return d.radius + 2; }))
-  .on("tick", ticked);
+const circles = [];
 
-function ticked() {
-  const u = svg.selectAll("circle")
-    .data(nodes);
-
-  u.enter()
-    .append("circle")
-    .attr("r", function(d) { return d.radius; })
-    .merge(u)
-    .attr("cx", function(d) { return d.x; })
-    .attr("cy", function(d) { return d.y; });
-
-  u.exit().remove();
+for (let i = 0; i < 100; i++) {
+  circles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 10 + 5,
+    dx: Math.random() * 2 - 1,
+    dy: Math.random() * 2 - 1
+  });
 }
+
+function drawCircles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  circles.forEach(circle => {
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2, false);
+    ctx.fillStyle = "rgba(0, 150, 255, 0.5)";
+    ctx.fill();
+  });
+}
+
+function updateCircles() {
+  circles.forEach(circle => {
+    circle.x += circle.dx;
+    circle.y += circle.dy;
+
+    if (circle.x + circle.radius > canvas.width || circle.x - circle.radius < 0) {
+      circle.dx *= -1;
+    }
+    if (circle.y + circle.radius > canvas.height || circle.y - circle.radius < 0) {
+      circle.dy *= -1;
+    }
+  });
+}
+
+function animate() {
+  drawCircles();
+  updateCircles();
+  requestAnimationFrame(animate);
+}
+
+animate();
