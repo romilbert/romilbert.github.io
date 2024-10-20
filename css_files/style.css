@@ -84,7 +84,7 @@ body {
     margin-bottom: 0.5rem;
     font-weight: 600;
     line-height: 1.2;
-    color: #343a40;
+    color: #687d8f !important;
   }
   
   
@@ -102,7 +102,7 @@ body {
   
   
   a {
-      color: #687d8f;
+      color: #687d8f !important;
       text-decoration: none;
       /* color: #428bca; */
   }
@@ -113,14 +113,14 @@ body {
   
   /* font-weight: bold; */
   .btn-primary {
-      /* color: #687d8f; */
+      /* color: #687d8f !important ; */
   }
   
   /* 0d6efd */
   .btn-primary {
       --bs-btn-color: #fff;
-      --bs-btn-bg: rgb(104, 125, 143);
-      --bs-btn-border-color: #687d8f;
+      --bs-btn-bg: rgb(104, 125, 143) !important;
+      --bs-btn-border-color: #687d8f !important;
       --bs-btn-hover-color: #fff;
       --bs-btn-hover-bg: #0b5ed7;
       --bs-btn-hover-border-color: #0a58ca;
@@ -136,7 +136,7 @@ body {
   
   
   :root {
-      --bs-primary-rgb: 104, 125, 143;
+      --bs-primary-rgb: 104, 125, 143 !important;
   }
   
   /* Badges spécifiques pour chaque année */
