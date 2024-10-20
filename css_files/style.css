@@ -286,3 +286,28 @@ color: #ffffff !important; /* Forcer tout le texte en blanc */
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
 color: #ffffff !important; /* Forcer les titres à devenir blancs */
 }
+
+/* Par défaut, les liens restent avec leur couleur normale */
+a {
+  color: #2a6496;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+/* En mode sombre, modifier les liens pour devenir plus clairs */
+body.dark-mode a {
+  color: #a0bed7 !important; /* Bleu clair en mode sombre */
+}
+
+/* Couleur des titres en mode normal */
+h1, h2, h3, h4, h5, h6 {
+  color: #343a40; /* Couleur par défaut des titres */
+}
+
+/* Couleur des titres en mode sombre */
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+  color: #ffffff !important; /* Couleur blanche pour les titres en mode sombre */
+}
