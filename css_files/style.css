@@ -253,7 +253,7 @@ button.group svg:first-child {
 
 /* Couleurs spécifiques au dark mode */
 body.dark-mode {
-  background-color: #121212 !important; /* Fond du dark mode */
+  background-color: #1e1f20 !important; /* Fond du dark mode */
   color: #e0e0e0 !important; /* Texte en dark mode */
 }
 
@@ -277,7 +277,7 @@ body.dark-mode button.group svg:last-child {
 }
 
 body.dark-mode {
-  background-color: #121212; /* Couleur de fond en dark mode */
+  background-color: #1e1f20; /* Couleur de fond en dark mode */
   color: #ffffff !important; /* Forcer tout le texte en blanc */
 }
 
