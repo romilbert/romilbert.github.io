@@ -102,7 +102,7 @@ body {
   
   
   a {
-      color: #2a6496;
+      color: #2a6496 !important;
       text-decoration: none;
       /* color: #428bca; */
   }
@@ -136,7 +136,7 @@ body {
   
   
   :root {
-      --bs-primary-rgb: 42, 100, 150;
+      --bs-primary-rgb: 42, 100, 150 !important;
   }
   
   /* Badges spécifiques pour chaque année */
