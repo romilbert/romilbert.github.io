@@ -234,8 +234,8 @@ button.group svg {
 
 /* Modifier la lune (visible en mode sombre) */
 button.group svg:last-child {
-  fill: #cccccc !important; /* Remplace le gris métallisé par un gris plus doux */
-  stroke: #888888 !important; /* Contour moins métallisé */
+  fill: #9ea5b3 !important; /* Remplace le gris métallisé par un gris plus doux */
+  stroke: #56595e !important; /* Contour moins métallisé */
 }
 
 /* Ajouter des rayons au soleil (visible en mode clair) */
