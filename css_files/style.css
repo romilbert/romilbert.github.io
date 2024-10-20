@@ -1,6 +1,6 @@
 /* Inspired from
  - https://vobecant.github.io/
- -
+ - couleur de base : #2a6496
 */
 
 /* Space out content a bit */
@@ -115,6 +115,8 @@ body {
   .btn-primary {
       /* color: #90989f !important ; */
   }
+
+
   
   /* 0d6efd */
   .btn-primary {
