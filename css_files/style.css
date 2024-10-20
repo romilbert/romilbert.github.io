@@ -311,6 +311,19 @@ h1, h2, h3, h4, h5, h6 {
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
   color: #ffffff !important; /* Couleur blanche pour les titres en mode sombre */
 }
+
+/* Fond des abstracts en mode clair */
+.bg-light {
+  background-color: #ffffff !important; /* Fond clair en mode clair */
+  color: #000000 !important; /* Texte noir en mode clair */
+}
+
+/* Fond des abstracts en mode sombre */
+body.dark-mode .bg-light {
+  background-color: #1e1f20 !important; /* Fond en gris foncé (identique au background de la page) */
+  color: #ffffff !important; /* Texte en blanc en mode sombre */
+}
+
 /* Style initial pour les titres avant qu'ils ne soient tapés */
 .typewriter span {
   border-right: 2px solid black; /* Curseur de saisie */
