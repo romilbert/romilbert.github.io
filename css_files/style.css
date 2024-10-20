@@ -132,8 +132,8 @@ body {
       --bs-btn-active-border-color: #0a53be;
       --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
       --bs-btn-disabled-color: #fff;
-      --bs-btn-disabled-bg: #90989f;
-      --bs-btn-disabled-border-color: rgb(144, 152, 159);
+      --bs-btn-disabled-bg: #90989f !important;
+      --bs-btn-disabled-border-color: rgb(144, 152, 159) !important;
   }
   
   
