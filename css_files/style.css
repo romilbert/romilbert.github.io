@@ -207,3 +207,17 @@ span.badge.badge-2019 {
   background-color: #67a4da !important;
   color: #fff;
 }
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .container {
+  background-color: #1e1e1e;
+}
+
+/* Exemple pour les liens */
+.dark-mode a {
+  color: #bb86fc;
+}
