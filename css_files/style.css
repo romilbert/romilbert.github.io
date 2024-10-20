@@ -241,7 +241,7 @@ button.group svg:last-child {
 /* Mode sombre pour le bouton avec la lune */
 body.dark-mode button.group {
   background-color: #313236 !important; /* Couleur de fond du bouton en mode sombre */
-  border-color: #9ea5b3 !important; /* Contour du bouton en mode sombre */
+  border-color: #4f535c !important; /* Contour du bouton en mode sombre */
 }
 
 /* Ajouter des rayons au soleil (visible en mode clair) */
