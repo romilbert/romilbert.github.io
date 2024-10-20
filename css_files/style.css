@@ -311,18 +311,22 @@ h1, h2, h3, h4, h5, h6 {
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
   color: #ffffff !important; /* Couleur blanche pour les titres en mode sombre */
 }
-
-/* Style initial pour les titres avant qu'ils ne soient tapés */
 .typewriter span {
   border-right: 2px solid black; /* Curseur de saisie */
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
-  opacity: 0;
+  width: 0; /* Initialement, la largeur est 0 */
+  opacity: 0; /* Initialement invisible */
 }
 
-/* Effet de saisie progressif */
+.visible span {
+  width: 100%; /* La largeur s'ajuste au texte une fois visible */
+  opacity: 1;
+  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+  animation-fill-mode: forwards; /* Assurer que l'état final est conservé */
+}
+
 @keyframes typing {
   from {
     width: 0;
@@ -334,18 +338,17 @@ body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body
   }
 }
 
-/* Effet de clignotement du curseur */
 @keyframes blink-caret {
   from, to {
-    border-color: transparent;
+    border-color: transparent; /* La barre disparaît après l'animation */
   }
   50% {
-    border-color: black;
+    border-color: black; /* Elle clignote pendant la saisie */
   }
 }
 
-/* Lorsque le titre est visible, on commence l'animation */
-.visible span {
-  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
-  opacity: 1;
+/* Quand la saisie est terminée, on retire la barre */
+.typewriter span::after {
+  content: ''; /* Supprimer le curseur après l'animation */
+  display: none;
 }
