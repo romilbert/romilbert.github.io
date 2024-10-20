@@ -234,8 +234,8 @@ button.group svg {
 
 /* Couleurs spécifiques au dark mode */
 body.dark-mode {
-  background-color: #121212; /* Fond du dark mode */
-  color: #e0e0e0; /* Texte en dark mode */
+  background-color: #121212 !important; /* Fond du dark mode */
+  color: #e0e0e0 !important; /* Texte en dark mode */
 }
 
 /* Icône lune (visible en mode clair) */
