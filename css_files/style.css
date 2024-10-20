@@ -311,44 +311,45 @@ h1, h2, h3, h4, h5, h6 {
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
   color: #ffffff !important; /* Couleur blanche pour les titres en mode sombre */
 }
+/* Style initial pour les titres avant qu'ils ne soient tapés */
 .typewriter span {
   border-right: 2px solid black; /* Curseur de saisie */
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  width: 0; /* Initialement, la largeur est 0 */
-  opacity: 0; /* Initialement invisible */
+  opacity: 0;
+  width: 0; /* Le texte commence avec une largeur de 0 */
+  animation: typing 3s steps(30, end) forwards, blink-caret 0.75s step-end infinite; /* L'animation de saisie et de clignotement */
 }
 
 .visible span {
-  width: 100%; /* La largeur s'ajuste au texte une fois visible */
-  opacity: 1;
-  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
-  animation-fill-mode: forwards; /* Assurer que l'état final est conservé */
+  opacity: 1; /* Le texte devient visible une fois l'animation commencée */
 }
 
 @keyframes typing {
   from {
     width: 0;
-    opacity: 1;
   }
   to {
-    width: 100%;
-    opacity: 1;
+    width: 100%; /* La largeur du texte complet */
   }
 }
 
 @keyframes blink-caret {
   from, to {
-    border-color: transparent; /* La barre disparaît après l'animation */
+    border-color: transparent; /* Le curseur disparaît après la fin de l'écriture */
   }
   50% {
-    border-color: black; /* Elle clignote pendant la saisie */
+    border-color: black; /* Le curseur clignote pendant la saisie */
   }
 }
 
-/* Quand la saisie est terminée, on retire la barre */
+/* Faire disparaître le curseur une fois l'animation terminée */
 .typewriter span::after {
-  content: ''; /* Supprimer le curseur après l'animation */
-  display: none;
+  content: '';
+  display: none; /* Retirer le curseur une fois la saisie terminée */
+}
+
+.typewriter span.end {
+  border-right: none; /* Supprimer la barre de saisie à la fin */
 }
