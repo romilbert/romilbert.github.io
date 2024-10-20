@@ -312,15 +312,40 @@ body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body
   color: #ffffff !important; /* Couleur blanche pour les titres en mode sombre */
 }
 
-/* Style pour rendre les titres invisibles initialement */
-.hidden-title {
+/* Style initial pour les titres avant qu'ils ne soient tapés */
+.typewriter span {
+  border-right: 2px solid black; /* Curseur de saisie */
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Classe active qui sera ajoutée lorsqu'un titre devient visible */
-.visible {
+/* Effet de saisie progressif */
+@keyframes typing {
+  from {
+    width: 0;
+    opacity: 1;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Effet de clignotement du curseur */
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+/* Lorsque le titre est visible, on commence l'animation */
+.visible span {
+  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
   opacity: 1;
-  transform: translateY(0);
 }
