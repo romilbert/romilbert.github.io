@@ -256,3 +256,12 @@ body.dark-mode button.group svg:first-child {
 body.dark-mode button.group svg:last-child {
   display: block;
 }
+
+body.dark-mode {
+  background-color: #121212; /* Couleur de fond en dark mode */
+  color: #ffffff !important; /* Forcer tout le texte en blanc */
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+  color: #ffffff !important; /* Forcer les titres à devenir blancs */
+}
