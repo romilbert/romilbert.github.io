@@ -265,3 +265,15 @@ body.dark-mode {
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
   color: #ffffff !important; /* Forcer les titres à devenir blancs */
 }
+
+/* Couleur du bouton en mode clair */
+button.group {
+  background-color: #c40f7f; /* Fond du bouton clair */
+  border: 1px solid #0fc61e; /* Contour du bouton en mode clair */
+}
+
+/* Couleur du bouton en mode sombre */
+body.dark-mode button.group {
+  background-color: #570bc8; /* Fond du bouton en mode sombre */
+  border: 1px solid #da0505; /* Contour du bouton en mode sombre */
+}
