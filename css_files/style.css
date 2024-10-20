@@ -235,7 +235,13 @@ button.group svg {
 /* Modifier la lune (visible en mode sombre) */
 button.group svg:last-child {
   fill: #9ea5b3 !important; /* Remplace le gris métallisé par un gris plus doux */
-  stroke: #56595e !important; /* Contour moins métallisé */
+  stroke: #313236 !important; /* Contour moins métallisé */
+}
+
+/* Mode sombre pour le bouton avec la lune */
+body.dark-mode button.group {
+  background-color: #313236 !important; /* Couleur de fond du bouton en mode sombre */
+  border-color: #9ea5b3 !important; /* Contour du bouton en mode sombre */
 }
 
 /* Ajouter des rayons au soleil (visible en mode clair) */
@@ -277,4 +283,21 @@ body.dark-mode {
 
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
   color: #ffffff !important; /* Forcer les titres à devenir blancs */
+}
+
+/* Changer la couleur spécifique pour tous les liens ou éléments en #2a6496 */
+a, h1, h2, h3, h4, h5, h6, p {
+  color: #2a6496;
+}
+
+/* En dark mode, remplacer #2a6496 par #a0bed7 */
+body.dark-mode a, 
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6, 
+body.dark-mode p {
+  color: #a0bed7 !important;
 }
