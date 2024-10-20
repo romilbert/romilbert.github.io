@@ -285,19 +285,3 @@ body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body
   color: #ffffff !important; /* Forcer les titres à devenir blancs */
 }
 
-/* Changer la couleur spécifique pour tous les liens ou éléments en #2a6496 */
-a, h1, h2, h3, h4, h5, h6, p {
-  color: #2a6496;
-}
-
-/* En dark mode, remplacer #2a6496 par #a0bed7 */
-body.dark-mode a, 
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode h4, 
-body.dark-mode h5, 
-body.dark-mode h6, 
-body.dark-mode p {
-  color: #a0bed7 !important;
-}
