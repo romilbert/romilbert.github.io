@@ -324,11 +324,21 @@ body.dark-mode .bg-light {
 }
 
 /* Position fixe en haut de la page sur mobile */
-@media (max-width: 1280px) {
+@media (max-width: 550px) {
+  .dark-mode-toggle {
+    position: relative !important; /* Ensure it's set as fixed */
+    top: -55px !important; /* Adjust as needed */
+    right: -290px !important; /* Adjust as needed */
+    z-index: 2000 !important;
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 1280px)  {
   .dark-mode-toggle {
     position: relative !important; /* Ensure it's set as fixed */
     top: -60px !important; /* Adjust as needed */
-    right: -660px !important; /* Adjust as needed */
+    right: -390px !important; /* Adjust as needed */
     z-index: 2000 !important;
     margin: 0 !important;
   }
