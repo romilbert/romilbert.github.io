@@ -325,7 +325,7 @@ body.dark-mode .bg-light {
 
 /* Position fixe en haut de la page sur mobile */
 @media (max-width: 767px) {
-  .top-0.right-0 {
+  .dark-mode-toggle {
     top: 2px !important;
     right: 4px !important;
     z-index: 1000 !important;
