@@ -327,11 +327,15 @@ body.dark-mode .bg-light {
 @media (max-width: 767px) {
   .top-0.right-0 {
     position: fixed !important;
-    top: 10px;
-    right: 4px;
-    z-index: 1000; /* S'assure qu'il soit toujours au-dessus */
-    transition: opacity 0.5s ease; /* Pour la transparence */
-}
+    top: 2px !important;
+    right: 2px !important;
+    z-index: 1000 !important;
+    background-color: rgba(255, 255, 255, 0.8) !important; /* Pour éviter de recouvrir le contenu */
+    border-radius: 50% !important;
+    padding: 0.5rem !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transition: opacity 0.3s ease !important; /* Transition pour le rendre dynamique */
+  }
 }
 
 .visible span {
