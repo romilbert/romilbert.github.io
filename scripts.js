@@ -4,7 +4,7 @@ function toggleDarkMode() {
 
 // Fonction pour changer l'opacité du bouton lors du scroll
 function handleScrollMobile() {
-    const button = document.querySelector('.top-0.right-0');
+    const button = document.querySelector('.dark-mode-toggle');
     
     if (window.innerWidth <= 767) {
       // Si la page est scrollée vers le bas, diminuer l'opacité

@@ -326,7 +326,7 @@ body.dark-mode .bg-light {
 /* Position fixe en haut de la page sur mobile */
 @media (max-width: 767px) {
   .dark-mode-toggle {
-    position: fixed; /* Ensure it's set as fixed */
+    position: fixed !important; /* Ensure it's set as fixed */
     top: 10px !important; /* Adjust as needed */
     right: 10px !important; /* Adjust as needed */
     z-index: 1000 !important;
@@ -336,7 +336,7 @@ body.dark-mode .bg-light {
 /* Position fixe en haut de la page sur mobile */
 @media (min-width: 768px) {
   .dark-mode-toggle {
-    position: absolute; /* Ensure it's set as fixed */
+    position: relative !important; /* Ensure it's set as fixed */
     top: 40px !important; /* Adjust as needed */
     right: 40px !important; /* Adjust as needed */
     z-index: 1000 !important;
