@@ -337,8 +337,8 @@ body.dark-mode .bg-light {
 @media (min-width: 1281px) {
   .dark-mode-toggle {
     position: fixed !important; /* Ensure it's set as fixed */
-    top: 4px !important; /* Adjust as needed */
-    right: 4px !important; /* Adjust as needed */
+    top: 2px !important; /* Adjust as needed */
+    right: 2px !important; /* Adjust as needed */
     z-index: 1200 !important;
   }
 }
