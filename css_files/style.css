@@ -349,7 +349,7 @@ body.dark-mode .bg-light {
   .dark-mode-toggle {
     position: fixed !important; /* Ensure it's set as fixed */
     top: 65px !important; /* Adjust as needed */
-    right: 30px !important; /* Adjust as needed */
+    right: 20px !important; /* Adjust as needed */
     z-index: 2000 !important;
     margin: 0 !important;
   }
