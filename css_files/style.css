@@ -326,15 +326,15 @@ body.dark-mode .bg-light {
 /* Position fixe en haut de la page sur mobile */
 @media (max-width: 767px) {
   .dark-mode-toggle {
-    position: fixed !important; /* Ensure it's set as fixed */
+    position: fixed; /* Ensure it's set as fixed */
     top: 10px !important; /* Adjust as needed */
     right: 10px !important; /* Adjust as needed */
     z-index: 1000 !important;
-    background-color: rgba(255, 255, 255, 0.9) !important; /* Make it clearer */
-    border-radius: 50% !important;
-    padding: 0.5rem !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-    transition: opacity 0.3s ease !important;
+    background-color: rgba(255, 255, 255, 0.9) ; /* Make it clearer */
+    border-radius: 50% ;
+    padding: 0.5rem !;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) ;
+    transition: opacity 0.3s ease ;
   }
 }
 
