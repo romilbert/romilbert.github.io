@@ -327,9 +327,9 @@ body.dark-mode .bg-light {
 @media (max-width: 1280px) {
   .dark-mode-toggle {
     position: relative !important; /* Ensure it's set as fixed */
-    top: 60px !important; /* Adjust as needed */
-    right: 60px !important; /* Adjust as needed */
-    z-index: 1000 !important;
+    top: 2px !important; /* Adjust as needed */
+    right: 2px !important; /* Adjust as needed */
+    z-index: 1400 !important;
   }
 }
 
@@ -337,8 +337,8 @@ body.dark-mode .bg-light {
 @media (min-width: 1281px) {
   .dark-mode-toggle {
     position: fixed !important; /* Ensure it's set as fixed */
-    top: 2px !important; /* Adjust as needed */
-    right: 2px !important; /* Adjust as needed */
+    top: 12px !important; /* Adjust as needed */
+    right: 12px !important; /* Adjust as needed */
     z-index: 1200 !important;
   }
 }
