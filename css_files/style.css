@@ -328,8 +328,8 @@ body.dark-mode .bg-light {
   .dark-mode-toggle {
     background-color: red;
     position: relative !important; /* Ensure it's set as fixed */
-    top: -100px !important; /* Adjust as needed */
-    right: -100px !important; /* Adjust as needed */
+    top: -800px !important; /* Adjust as needed */
+    right: -800px !important; /* Adjust as needed */
     z-index: 2000 !important;
     margin: 0 !important;
   }
