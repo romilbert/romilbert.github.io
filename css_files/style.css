@@ -323,15 +323,13 @@ body.dark-mode .bg-light {
   color: #ffffff !important; /* Texte en blanc en mode sombre */
 }
 
-/* Style initial pour les titres avant qu'ils ne soient tapés */
-.typewriter span {
-  border-right: 2px solid black; /* Curseur de saisie */
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  opacity: 0;
-  width: 0; /* Le texte commence avec une largeur de 0 */
-  animation: typing 3s steps(30, end) forwards, blink-caret 0.75s step-end infinite; /* L'animation de saisie et de clignotement */
+/* Position fixe en haut de la page sur mobile */
+@media (max-width: 767px) {
+  .top-0.right-0 {
+    position: fixed; /* Position fixe pour qu'il reste accroché en haut */
+    top: auto;
+    right: auto;
+  }
 }
 
 .visible span {
@@ -356,12 +354,3 @@ body.dark-mode .bg-light {
   }
 }
 
-/* Faire disparaître le curseur une fois l'animation terminée */
-.typewriter span::after {
-  content: '';
-  display: none; /* Retirer le curseur une fois la saisie terminée */
-}
-
-.typewriter span.end {
-  border-right: none; /* Supprimer la barre de saisie à la fin */
-}
