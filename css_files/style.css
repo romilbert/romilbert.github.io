@@ -211,7 +211,7 @@ color: #fff;
 
 /* Style pour le bouton dark mode */
 .top-0.right-0 {
-position: absolute;
+position: absolute !important;
 top: 10px;
 right: 8px;
 }
