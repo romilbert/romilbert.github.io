@@ -326,7 +326,7 @@ body.dark-mode .bg-light {
 /* Position fixe en haut de la page sur mobile */
 @media (max-width: 767px) {
   .top-0.right-0 {
-    position: fixed; /* Position fixe pour qu'il reste accroché en haut */
+    position: fixed !important; /* Position fixe pour qu'il reste accroché en haut */
     top: auto;
     right: auto;
   }
