@@ -141,6 +141,17 @@ a:hover, a:focus {
 
 /* Badges spécifiques pour chaque année */
 
+/* Badge pour 2025 */
+.badge-2025 {
+  background-color: #67a4da; /* Rouge */
+  color: #fff;
+  }
+  
+  span.badge.badge-2025 {
+  background-color: #67a4da !important;
+  color: #fff;
+  }
+
 /* Badge pour 2024 */
 .badge-2024 {
 background-color: #7141e27b; /* Bleu par défaut */
