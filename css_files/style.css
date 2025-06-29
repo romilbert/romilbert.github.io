@@ -388,3 +388,8 @@ body.dark-mode .bg-light {
   }
 }
 
+/* marge sous chaque titre de section (h3) */
+h3.section-title {
+  margin-bottom: 1rem;          /*  ≈ 16 px  */
+}
+
