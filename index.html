@@ -73,12 +73,22 @@
             </button>
           </div>
 
-          <h3 class="custom">
-            Incoming Research Scientist <img src="meta/meta_logo.svg" alt="Meta" style="height: 24px; vertical-align: middle; margin-left: 8px;">
-          </h3>
-          <br>
-          <p style="font-size: 120%;text-align: justify;">
-          </p>
+          <!-- Titre + trait + logo sur UNE ligne -->
+          <div style="
+              display:flex;
+              align-items:baseline;      /* aligne le bas du texte et du logo */
+              border-bottom:1px solid #ccc;
+              padding-bottom:5px;        /* petit espace au-dessus du trait */
+              margin-bottom:24px;">      <!-- espace après le trait -->
+            
+            <!-- le titre garde la même typo que tes autres h3 -->
+            <h3 class="custom mb-0" style="margin:0;">Incoming Research Scientist</h3>
+
+            <!-- logo Meta, même ligne -->
+            <img src="meta/meta_logo.svg"
+                alt="Meta"
+                style="height:24px;margin-left:8px;">
+          </div>
 
           <div id="contact_phd">
             <p style="font-size: 120%; text-align: justify;">
