@@ -941,7 +941,29 @@
 
     init();
   })();
-  </script>
+    </script>
+    <div class="row">
+    <div class="col-md-12">
+      <h3 class="section-title">Ask Romain</h3>
+
+      <div class="d-flex flex-wrap gap-2 mb-2">
+        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">What do you do at Meta?</button>
+        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">What is SAMformer?</button>
+        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">NeurIPS spotlight?</button>
+        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">Key papers and venues?</button>
+      </div>
+
+      <div id="askromain-chat" class="askromain-chat"></div>
+
+      <form id="askromain-form" class="mt-2">
+        <div class="input-group">
+          <input id="askromain-input" type="text" class="form-control" placeholder="Ask a question..." autocomplete="off">
+          <button type="submit" class="btn btn-primary">Send</button>
+          <button id="askromain-clear" type="button" class="btn btn-outline-secondary">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
   </body>
 </html>
 
