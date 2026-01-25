@@ -452,6 +452,296 @@
       }
     })();
     </script>
+
+      <!-- ===================== Ask Romain ===================== -->
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <h3 class="pb-1 mb-3 border-bottom">Ask Romain</h3>
+
+        <div class="card shadow-sm" style="border-radius:16px;">
+          <div class="card-body" style="font-size: 110%;">
+            <div class="d-flex align-items-start justify-content-between flex-wrap gap-2">
+              <div>
+                <div style="font-weight:600; font-size: 1.05rem;">Ask me anything about my work</div>
+                <div class="text-muted" style="font-size: 0.95rem;">
+                  Local Q&A (no external calls). Try: “What is SAMformer?”, “NeurIPS Spotlight?”, “What do you do at Meta?”
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button id="askromain-clear" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
+              </div>
+            </div>
+
+            <div class="mt-3 askromain-chat" id="askromain-chat" aria-live="polite"></div>
+
+            <form class="mt-3" id="askromain-form">
+              <div class="input-group">
+                <input
+                  id="askromain-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Ask a question…"
+                  autocomplete="off"
+                  maxlength="240"
+                  required
+                />
+                <button class="btn btn-primary" type="submit">Ask</button>
+              </div>
+
+              <div class="mt-2 d-flex flex-wrap gap-2" id="askromain-suggestions">
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">What is SAMformer?</button>
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">What is Mantis?</button>
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">What do you do at Meta?</button>
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">Key papers and venues?</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- =================== /Ask Romain =================== -->
+
+    <script>
+  (() => {
+    // -------------------------
+    // Local knowledge base
+    // -------------------------
+    const KB = [
+      {
+        id: "meta_work",
+        title: "What I do at Meta",
+        tags: ["meta", "research scientist", "london", "optimization", "planning", "transformers", "reliability", "calibration", "robustness", "delayed feedback", "long horizon"],
+        answer: `
+  I am a Research Scientist at Meta (London). My work focuses on long-horizon optimization and planning for large-scale ML decision systems, with emphasis on reliability, robustness, and calibration under delayed and noisy feedback. The resulting models and methods are deployed at production scale, reaching billions of daily users.
+        `.trim(),
+        links: [
+          { label: "LinkedIn", url: "https://www.linkedin.com/in/romain-ilbert/" },
+          { label: "Meta AI", url: "https://ai.meta.com" }
+        ]
+      },
+      {
+        id: "samformer",
+        title: "SAMformer",
+        tags: ["samformer", "icml", "oral", "sharpness-aware", "sam", "transformer", "forecasting", "time series", "channel-wise attention", "optimization", "generalization"],
+        answer: `
+  SAMformer is a lightweight transformer-based model for multivariate long-term forecasting. It combines channel-wise attention with sharpness-aware optimization (SAM) to escape poor minima and improve generalization. It was accepted as an Oral at ICML 2024 (≈ top 1%).
+        `.trim(),
+        links: [
+          { label: "Paper (OpenReview)", url: "https://openreview.net/forum?id=8kLzL5QBh2" },
+          { label: "Code (GitHub)", url: "https://github.com/romilbert/samformer" }
+        ]
+      },
+      {
+        id: "neurips_spotlight",
+        title: "NeurIPS Spotlight paper",
+        tags: ["neurips", "spotlight", "random matrix theory", "multi-task", "regression", "theory", "forecasting", "time series"],
+        answer: `
+  My NeurIPS 2024 Spotlight paper (≈ top 2%) analyzes multi-task regression using random matrix theory, with applications to time series forecasting. It provides theory and practical insights for model selection and regularization in high-dimensional settings.
+        `.trim(),
+        links: [
+          { label: "Paper (OpenReview)", url: "https://openreview.net/forum?id=FFW6rPz48Z" }
+        ]
+      },
+      {
+        id: "mantis",
+        title: "Mantis (foundation model for time series classification)",
+        tags: ["mantis", "foundation model", "classification", "time series", "vit", "contrastive", "huggingface", "downloads", "calibration"],
+        answer: `
+  Mantis is an open-source foundation model for time series classification (ViT-style backbone, contrastive pretraining). It achieves strong accuracy and low calibration error, and it is adopted by the community with tens of thousands of downloads per month on HuggingFace.
+        `.trim(),
+        links: [
+          { label: "Model (HuggingFace)", url: "https://huggingface.co/paris-noah/Mantis-8M" },
+          { label: "Paper (OpenReview)", url: "https://openreview.net/forum?id=FDDkR53rim" }
+        ]
+      },
+      {
+        id: "phd",
+        title: "PhD",
+        tags: ["phd", "thesis", "lipade", "universite paris cite", "noah's ark lab", "cifre", "time series", "representation learning"],
+        answer: `
+  I defended my PhD in May 2025. The thesis was conducted jointly between LIPADE (Université Paris Cité) and Noah’s Ark Lab (Paris), supervised by Ievgen Redko and Themis Palpanas. My research focused on representation learning for time series (forecasting, classification), optimization, robustness, and foundation models.
+        `.trim(),
+        links: [
+          { label: "Thesis (PDF)", url: "thesis/romain_ilbert_phd.pdf" }
+        ]
+      },
+      {
+        id: "education",
+        title: "Education",
+        tags: ["ensae", "polytechnique", "engineering", "master", "data science", "statistics", "machine learning"],
+        answer: `
+  I hold an engineering diploma (ENSAE) in Data Science / Statistics / Machine Learning, and a Master’s degree in Machine Learning Research from École Polytechnique.
+        `.trim(),
+        links: [
+          { label: "ENSAE", url: "https://www.ensae.fr/en" },
+          { label: "École Polytechnique (Master)", url: "https://www.ip-paris.fr/en/education/masters/applied-mathematics-and-statistics-program/master-year-2-data-science" }
+        ]
+      }
+    ];
+
+    // Optional: small synonym map to improve matching.
+    const SYNONYMS = {
+      "rmt": "random matrix theory",
+      "sharpness": "sharpness-aware",
+      "sam": "sharpness-aware",
+      "forecast": "forecasting",
+      "timeseries": "time series",
+      "hf": "huggingface",
+      "spotlight": "neurips spotlight",
+      "oral": "icml oral",
+    };
+
+    // -------------------------
+    // Text normalization + tokenization
+    // -------------------------
+    const normalize = (s) => (s || "")
+      .toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // accents
+      .replace(/[^a-z0-9\s\-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    const expandSynonyms = (s) => {
+      let t = " " + normalize(s) + " ";
+      for (const [k, v] of Object.entries(SYNONYMS)) {
+        t = t.replaceAll(" " + k + " ", " " + v + " ");
+      }
+      return t.trim();
+    };
+
+    const tokenize = (s) => {
+      const t = expandSynonyms(s);
+      if (!t) return [];
+      return t.split(" ").filter(w => w.length >= 2);
+    };
+
+    // Simple scoring: overlap with tags + title + answer keywords.
+    const scoreItem = (qTokens, item) => {
+      const hay = normalize(item.title + " " + item.tags.join(" ") + " " + item.answer);
+      let score = 0;
+
+      for (const tok of qTokens) {
+        if (!tok) continue;
+        // boost exact tag match
+        if (item.tags.some(tag => normalize(tag) === tok)) score += 6;
+        // boost presence in title
+        if (normalize(item.title).includes(tok)) score += 4;
+        // general presence
+        if (hay.includes(tok)) score += 1;
+      }
+
+      // Extra boost if query contains "what" + item looks like a definition
+      if (qTokens.includes("what") || qTokens.includes("quoi")) score += 0.5;
+
+      return score;
+    };
+
+    const retrieve = (query, k = 3) => {
+      const qTokens = tokenize(query);
+      const scored = KB.map(item => ({ item, score: scoreItem(qTokens, item) }))
+        .sort((a, b) => b.score - a.score);
+
+      const best = scored[0];
+      if (!best || best.score < 3) return { hit: null, top: scored.slice(0, k) };
+      return { hit: best.item, top: scored.slice(0, k) };
+    };
+
+    // -------------------------
+    // UI
+    // -------------------------
+    const chat = document.getElementById("askromain-chat");
+    const form = document.getElementById("askromain-form");
+    const input = document.getElementById("askromain-input");
+    const clearBtn = document.getElementById("askromain-clear");
+
+    const escapeHTML = (s) => (s || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
+
+    const addMsg = (role, html) => {
+      const isUser = role === "You";
+      const msg = document.createElement("div");
+      msg.className = `askromain-msg ${isUser ? "askromain-user" : "askromain-assistant"}`;
+      msg.innerHTML = `
+        <div class="askromain-role">${isUser ? "You" : "RI"}</div>
+        <div class="askromain-bubble">${html}</div>
+      `;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+    };
+
+    const renderLinks = (links) => {
+      if (!links || !links.length) return "";
+      const items = links.map(l => `<a href="${l.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(l.label)}</a>`).join(" · ");
+      return `<div class="askromain-links mt-2">${items}</div>`;
+    };
+
+    const answerQuery = (q) => {
+      const { hit, top } = retrieve(q);
+
+      if (hit) {
+        addMsg("RI", `
+          <div>${escapeHTML(hit.answer).replaceAll("\n", "<br>")}</div>
+          ${renderLinks(hit.links)}
+          <div class="askromain-meta">Matched topic: <b>${escapeHTML(hit.title)}</b></div>
+        `);
+        return;
+      }
+
+      // fallback: show suggestions (top topics) without pretending
+      const suggestions = top
+        .filter(x => x.score > 0)
+        .slice(0, 3)
+        .map(x => `<li><b>${escapeHTML(x.item.title)}</b></li>`)
+        .join("");
+
+      addMsg("RI", `
+        <div>I’m not fully sure what you mean. Here are the closest topics I can answer:</div>
+        <ul class="mt-2 mb-2">${suggestions || "<li><b>SAMformer</b></li><li><b>Mantis</b></li><li><b>Meta</b></li>"}</ul>
+        <div class="text-muted">Try rephrasing (e.g., “SAMformer optimization”, “Mantis downloads”, “NeurIPS spotlight topic”).</div>
+      `);
+    };
+
+    const init = () => {
+      addMsg("RI", `
+        <div>Hi — I’m a local Q&A widget (no external calls). Ask about my research, papers, or current work.</div>
+        <div class="askromain-meta">Examples: “What is SAMformer?”, “What is Mantis?”, “What do you do at Meta?”</div>
+      `);
+    };
+
+    // Suggestions buttons
+    document.querySelectorAll(".askromain-suggestion").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const q = btn.textContent.trim();
+        input.value = q;
+        input.focus();
+        // Option: auto-submit
+        addMsg("You", escapeHTML(q));
+        answerQuery(q);
+      });
+    });
+
+    // Form submit
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+      addMsg("You", escapeHTML(q));
+      input.value = "";
+      answerQuery(q);
+    });
+
+    // Clear
+    clearBtn.addEventListener("click", () => {
+      chat.innerHTML = "";
+      init();
+      input.focus();
+    });
+
+    init();
+  })();
+  </script>
   </body>
 </html>
 
