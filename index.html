@@ -141,7 +141,7 @@
           <h3>News</h3>
           <ul class="mb-0" style="list-style-type:none;padding-left:0;font-size: 120%;">
       <li><span class="badge badge-2020" style="width: 85px">01/2026</span> <b>Mantis</b> reached <b>30,000 downloads in the last month</b> on HuggingFace.</li><br>
-      <li><span class="badge badge-2025" style="width: 85px">09/2025</span> Joined <b><a href="https://ai.meta.com" target="_blank">Meta</a></b>> as a <b>Research Scientist</b> (London), working on long-horizon optimization and reliability of large-scale ML systems under delayed and noisy feedback.</li>
+      <li><span class="badge badge-2025" style="width: 85px">09/2025</span> Joined <b><a href="https://ai.meta.com" target="_blank">Meta</a></b> as a <b>Research Scientist</b> (London), working on long-horizon optimization and reliability of large-scale ML systems under delayed and noisy feedback.</li>
       <li><span class="badge badge-2025" style="width: 85px">06/2025</span> 📄 <b><a href="https://arxiv.org/pdf/2502.15637?" target="_blank">Mantis</a></b> has been accepted at the ICML 2025 Workshop on Foundation Models for Structured Data.</li>
       <li><span class="badge badge-2025" style="width: 85px">05/2025</span> I presented the paper <b><a href="adapters/adapters_multisa.pdf" target="_blank">User-Friendly Foundation Model Adapters for Multivariate Time Series Classification</a></b> at the ICDE conference in Hong Kong.</li>
       <li><span class="badge badge-2025" style="width: 85px">05/2025</span> 🎓 I successfully defended my Ph.D. You can find my thesis <a href="thesis/romain_ilbert_phd.pdf" target="_blank">here</a>.</li>
@@ -196,7 +196,8 @@
         <strong>Mantis: Lightweight Calibrated Foundation Model for User-Friendly Time Series Classification</strong><br>
         Vasilii Feofanov, Marius Alonso, Songkang Wen, <u>Romain Ilbert</u>, Hongbo Guo, Malik Tiomoko, Lujia Pan, Jianfeng Zhang and Ievgen Redko<br>
         <i>ICML Workshop on Foundation Models for Structured Data</i> <br>
-    <br>
+        <b><span id="mantis-downloads">Loading downloads...</span></b> <br>
+        <br>
         <a target="_blank" href="https://openreview.net/forum?id=FDDkR53rim"> <button type="button" class="btn btn-primary btn-sm"> Paper </button></a>
         <a target="_blank" href="https://huggingface.co/paris-noah/Mantis-8M"> <button type="button" class="btn btn-primary btn-sm"> Code </button></a>
         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#abstract24">Abstract</button>
@@ -426,7 +427,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+  
 
+
+    <script>
+    (async () => {
+      try {
+        const r = await fetch("https://huggingface.co/api/models/paris-noah/Mantis-8M");
+        const data = await r.json();
+
+        const downloads = (typeof data.downloads === "number") ? data.downloads : null;
+
+        const el = document.getElementById("mantis-downloads");
+        if (!el) return;
+
+        if (downloads !== null) {
+          el.innerText = `~${downloads.toLocaleString()} downloads (last 30 days) on HuggingFace`;
+        } else {
+          el.innerText = "Adopted by the community on HuggingFace";
+        }
+      } catch (e) {
+        const el = document.getElementById("mantis-downloads");
+        if (el) el.innerText = "Adopted by the community on HuggingFace";
+      }
+    })();
+    </script>
   </body>
 </html>
 
