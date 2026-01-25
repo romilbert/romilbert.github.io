@@ -452,273 +452,152 @@
       }
     })();
     </script>
+
+      <!-- ===================== Ask Romain ===================== -->
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <h3 class="pb-1 mb-3 border-bottom">Ask Romain</h3>
+
+        <div class="card shadow-sm" style="border-radius:16px;">
+          <div class="card-body" style="font-size: 110%;">
+            <div class="d-flex align-items-start justify-content-between flex-wrap gap-2">
+              <div>
+                <div style="font-weight:600; font-size: 1.05rem;">Ask me anything about my work</div>
+                <div class="text-muted" style="font-size: 0.95rem;">
+                  Local Q&A (no external calls). Try: “What is SAMformer?”, “NeurIPS Spotlight?”, “What do you do at Meta?”
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button id="askromain-clear" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
+              </div>
+            </div>
+
+            <div class="mt-3 askromain-chat" id="askromain-chat" aria-live="polite"></div>
+
+            <form class="mt-3" id="askromain-form">
+              <div class="input-group">
+                <input
+                  id="askromain-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Ask a question…"
+                  autocomplete="off"
+                  maxlength="240"
+                  required
+                />
+                <button class="btn btn-primary" type="submit">Ask</button>
+              </div>
+
+              <div class="mt-2 d-flex flex-wrap gap-2" id="askromain-suggestions">
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">What is SAMformer?</button>
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">What is Mantis?</button>
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">What do you do at Meta?</button>
+                <button type="button" class="btn btn-light btn-sm askromain-suggestion">Key papers and venues?</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- =================== /Ask Romain =================== -->
+
     <script>
   (() => {
-    // =========================================================
-    // 1) Knowledge base (local)
-    // =========================================================
+    // -------------------------
+    // Local knowledge base
+    // -------------------------
     const KB = [
-      // ---------- Meta ----------
       {
         id: "meta_work",
         title: "What I do at Meta",
-        tags: [
-          "meta","research scientist","london","ads","decision systems",
-          "long horizon","long-horizon","long-term","planning","optimization",
-          "reliability","robustness","calibration","delayed feedback","noisy feedback",
-          "production","at scale","billion users"
-        ],
+        tags: ["meta", "research scientist", "london", "optimization", "planning", "transformers", "reliability", "calibration", "robustness", "delayed feedback", "long horizon"],
         answer: `
-  I am a Research Scientist at Meta (London). I work on long-horizon optimization and planning for large-scale ML decision systems, with an emphasis on reliability, robustness, and calibration under delayed and noisy feedback. The resulting methods are deployed in production systems serving billions of users.
+  I am a Research Scientist at Meta (London). My work focuses on long-horizon optimization and planning for large-scale ML decision systems, with emphasis on reliability, robustness, and calibration under delayed and noisy feedback. The resulting models and methods are deployed at production scale, reaching billions of daily users.
         `.trim(),
         links: [
           { label: "LinkedIn", url: "https://www.linkedin.com/in/romain-ilbert/" },
-          { label: "Website", url: "https://romain.ilbert.com" }
+          { label: "Meta AI", url: "https://ai.meta.com" }
         ]
       },
-      {
-        id: "meta_topics_examples",
-        title: "What problems I like working on",
-        tags: [
-          "long horizon optimization","delayed feedback","counterfactual","off-policy",
-          "bandits","reinforcement learning","sequence decision","planning",
-          "reliability","calibration","robustness","metrics","monitoring"
-        ],
-        answer: `
-  I enjoy problems at the intersection of optimization and reliability of ML systems under delayed/noisy feedback: long-horizon objectives, robust decision policies, calibration and monitoring, and practical deployment constraints.
-        `.trim(),
-        links: []
-      },
-
-      // ---------- PhD ----------
-      {
-        id: "phd_overview",
-        title: "PhD (Université Paris Cité & Noah’s Ark Lab)",
-        tags: [
-          "phd","thesis","universite paris cite","paris cite","noah's ark lab","huawei",
-          "lipade","supervision","ievgen redko","themis palpanas",
-          "representation learning","multivariate time series","time series",
-          "transformers","optimization","theory","robustness","foundation models"
-        ],
-        answer: `
-  My PhD (Dec 2021–Apr 2025) was conducted jointly between Université Paris Cité and Huawei Noah’s Ark Lab (Paris area), supervised by Ievgen Redko and Themis Palpanas. It focused on representation learning for multivariate time series, with an emphasis on transformers, optimization, robustness, and theoretical understanding of learning dynamics.
-        `.trim(),
-        links: [
-          { label: "Website", url: "https://romain.ilbert.com" }
-        ]
-      },
-      {
-        id: "papers_venues",
-        title: "Key papers and venues",
-        tags: ["publications","papers","venues","icml","neurips","icde","acm ccs","workshops"],
-        answer: `
-  Selected works include:
-  • SAMformer — ICML 2024 Oral (top ~1%).
-  • Multi-task regression via Random Matrix Theory — NeurIPS 2024 Spotlight (top ~2%).
-  • Mantis — foundation model for time series classification (widely adopted on Hugging Face).
-  Additional works include workshop papers on multi-task learning for forecasting, foundation models, data augmentation, and adversarial ML for time series.
-        `.trim(),
-        links: []
-      },
-
-      // ---------- SAMformer ----------
       {
         id: "samformer",
-        title: "SAMformer (ICML 2024 Oral)",
-        tags: [
-          "samformer","icml","icml oral","oral","forecasting","long-term forecasting","ltsf",
-          "transformer","multivariate","time series","channel attention","channel-wise attention",
-          "sharpness-aware","sharpness aware","sam","optimization","generalization"
-        ],
+        title: "SAMformer",
+        tags: ["samformer", "icml", "oral", "sharpness-aware", "sam", "transformer", "forecasting", "time series", "channel-wise attention", "optimization", "generalization"],
         answer: `
-  SAMformer is a lightweight transformer-based model for multivariate long-term forecasting. It combines channel-wise attention with sharpness-aware optimization (SAM) to improve generalization. It was accepted as an Oral at ICML 2024 (top ~1%).
+  SAMformer is a lightweight transformer-based model for multivariate long-term forecasting. It combines channel-wise attention with sharpness-aware optimization (SAM) to escape poor minima and improve generalization. It was accepted as an Oral at ICML 2024 (≈ top 1%).
         `.trim(),
         links: [
           { label: "Paper (OpenReview)", url: "https://openreview.net/forum?id=8kLzL5QBh2" },
           { label: "Code (GitHub)", url: "https://github.com/romilbert/samformer" }
         ]
       },
-
-      // ---------- NeurIPS Spotlight ----------
       {
-        id: "neurips_spotlight_rmt",
-        title: "NeurIPS 2024 Spotlight (Random Matrix Theory for Multi-Task Regression)",
-        tags: [
-          "neurips","neurips spotlight","spotlight","random matrix theory","rmt",
-          "multi-task","multitask","regression","high-dimensional","regularization",
-          "theory","generalization","time series"
-        ],
+        id: "neurips_spotlight",
+        title: "NeurIPS Spotlight paper",
+        tags: ["neurips", "spotlight", "random matrix theory", "multi-task", "regression", "theory", "forecasting", "time series"],
         answer: `
-  My NeurIPS 2024 Spotlight paper analyzes multi-task regression through random matrix theory, with applications to time series forecasting. It provides theoretical and practical insights for task interactions, generalization, and regularization in high-dimensional regimes.
+  My NeurIPS 2024 Spotlight paper (≈ top 2%) analyzes multi-task regression using random matrix theory, with applications to time series forecasting. It provides theory and practical insights for model selection and regularization in high-dimensional settings.
         `.trim(),
         links: [
           { label: "Paper (OpenReview)", url: "https://openreview.net/forum?id=FFW6rPz48Z" }
         ]
       },
-
-      // ---------- Mantis ----------
       {
         id: "mantis",
         title: "Mantis (foundation model for time series classification)",
-        tags: [
-          "mantis","foundation model","time series classification","classification","huggingface","hf",
-          "pretraining","contrastive","calibration","downloads","baseline","lightweight"
-        ],
+        tags: ["mantis", "foundation model", "classification", "time series", "vit", "contrastive", "huggingface", "downloads", "calibration"],
         answer: `
-  Mantis is an open-source foundation model for time series classification. It is designed to be lightweight and well-calibrated, and is widely adopted by the community with tens of thousands of downloads per month on Hugging Face.
+  Mantis is an open-source foundation model for time series classification (ViT-style backbone, contrastive pretraining). It achieves strong accuracy and low calibration error, and it is adopted by the community with tens of thousands of downloads per month on HuggingFace.
         `.trim(),
         links: [
-          { label: "Model (HuggingFace)", url: "https://huggingface.co/paris-noah/Mantis-8M" }
+          { label: "Model (HuggingFace)", url: "https://huggingface.co/paris-noah/Mantis-8M" },
+          { label: "Paper (OpenReview)", url: "https://openreview.net/forum?id=FDDkR53rim" }
         ]
       },
-
-      // ---------- Experience before PhD ----------
       {
-        id: "sncf_intern",
-        title: "SNCF Voyageurs — ML Engineer Intern (Time Series Forecasting)",
-        tags: [
-          "sncf","voyageurs","intern","forecasting","time series","ticket sales","occupancy",
-          "mape","azure","jenkins","sql","deployment","nationwide rollout","la defense"
-        ],
+        id: "phd",
+        title: "PhD",
+        tags: ["phd", "thesis", "lipade", "universite paris cite", "noah's ark lab", "cifre", "time series", "representation learning"],
         answer: `
-  At SNCF Voyageurs (May–Nov 2021), I built forecasting models for train ticket sales across thousands of stations (multiple granularities: route, train, OD pairs). The work achieved ~10% MAPE at 92 days before departure and was rolled out nationwide. Deployment used Azure VMs and Jenkins, with extensive SQL on large datasets.
+  I defended my PhD in May 2025. The thesis was conducted jointly between LIPADE (Université Paris Cité) and Noah’s Ark Lab (Paris), supervised by Ievgen Redko and Themis Palpanas. My research focused on representation learning for time series (forecasting, classification), optimization, robustness, and foundation models.
         `.trim(),
-        links: []
+        links: [
+          { label: "Thesis (PDF)", url: "thesis/romain_ilbert_phd.pdf" }
+        ]
       },
-      {
-        id: "cnrs_intern",
-        title: "CNRS — ML Research Intern (Computational Finance & Deep Learning)",
-        tags: [
-          "cnrs","intern","palaiseau","computational finance","deep learning",
-          "tensorflow","stochastic calculus","pde","optimal trading","wind energy"
-        ],
-        answer: `
-  At CNRS (Jun–Oct 2020), I worked on computational finance and deep learning: a quantitative strategy for maximizing wind energy producers’ profits, and TensorFlow + stochastic calculus to solve PDEs modeling optimal trading strategies.
-        `.trim(),
-        links: []
-      },
-      {
-        id: "rothschild_intern",
-        title: "Rothschild & Co — Quant Research Intern (Portfolio Management)",
-        tags: [
-          "rothschild","quant","quantitative finance","portfolio management","monaco",
-          "euro stoxx 50","backtest","bloomberg","factset"
-        ],
-        answer: `
-  At Rothschild & Co (Jun–Aug 2019, Monaco), I developed a quantitative model outperforming the Euro Stoxx 50 over 20 years (backtest) and used Bloomberg/FactSet for data work.
-        `.trim(),
-        links: []
-      },
-
-      // ---------- Education ----------
       {
         id: "education",
-        title: "Education (ENSAE Paris & École Polytechnique)",
-        tags: [
-          "ensae","ecole polytechnique","polytechnique","master","data science",
-          "statistics","statistical learning","optimization","optimal transport",
-          "reinforcement learning","computer vision","nlp","online learning"
-        ],
+        title: "Education",
+        tags: ["ensae", "polytechnique", "engineering", "master", "data science", "statistics", "machine learning"],
         answer: `
-  I studied at ENSAE Paris (Data & Statistical Learning) and École Polytechnique (Master in Data Science). Coursework covered statistical learning, optimization, optimal transport, reinforcement learning, online learning, NLP, and applied ML projects.
+  I hold an engineering diploma (ENSAE) in Data Science / Statistics / Machine Learning, and a Master’s degree in Machine Learning Research from École Polytechnique.
         `.trim(),
         links: [
           { label: "ENSAE", url: "https://www.ensae.fr/en" },
-          { label: "École Polytechnique", url: "https://www.ip-paris.fr/en" }
+          { label: "École Polytechnique (Master)", url: "https://www.ip-paris.fr/en/education/masters/applied-mathematics-and-statistics-program/master-year-2-data-science" }
         ]
-      },
-
-      // ---------- Reviewing / community ----------
-      {
-        id: "reviewing",
-        title: "Peer reviewing",
-        tags: ["reviewer","reviewing","icml","neurips","vldb","peer review"],
-        answer: `
-  I regularly serve as a reviewer for major venues including ICML, NeurIPS, and VLDB.
-        `.trim(),
-        links: []
-      },
-
-      // ---------- Skills ----------
-      {
-        id: "skills_ml",
-        title: "ML & Engineering skills",
-        tags: [
-          "python","pytorch","tensorflow","cuda","numpy","pandas","scikit-learn","scipy","keras",
-          "hugging face","transformers","matplotlib","gpu","gpu cluster","git","overleaf",
-          "experimentation","training","deployment"
-        ],
-        answer: `
-  Core stack: Python, PyTorch, TensorFlow, CUDA, NumPy/Pandas, scikit-learn, SciPy, Keras, Hugging Face Transformers; plus GPU training and large-scale experimentation. Tooling: Git and Overleaf.
-        `.trim(),
-        links: []
-      },
-      {
-        id: "skills_math_finance",
-        title: "Math & Finance background",
-        tags: [
-          "mathematics","statistics","statistical learning","optimization","linear algebra",
-          "probabilities","topology","stochastic calculus","arbitrage","black scholes",
-          "pricing","portfolio management","trading"
-        ],
-        answer: `
-  Background in mathematics (statistics, optimization, linear algebra, probability) and finance topics (stochastic calculus, pricing/replication, portfolio management, quantitative models).
-        `.trim(),
-        links: []
-      },
-
-      // ---------- Other ----------
-      {
-        id: "languages",
-        title: "Languages",
-        tags: ["languages","french","english","spanish","ielts"],
-        answer: `
-  French (native), English (C1, IELTS 7.5), Spanish (B2).
-        `.trim(),
-        links: []
-      },
-      {
-        id: "side_projects",
-        title: "Other experiences",
-        tags: ["solidity","cryptocurrency","kryptosphere","treasurer","tutor","teaching","math tutor","chess"],
-        answer: `
-  Other experiences include: treasurer at KryptoSphère ENSAE (cryptocurrency association), coding in Solidity, and math tutoring.
-        `.trim(),
-        links: []
       }
     ];
 
-    // =========================================================
-    // 2) Matching utilities: synonyms, stopwords, tokenization
-    // =========================================================
+    // Optional: small synonym map to improve matching.
     const SYNONYMS = {
-      // abbreviations
       "rmt": "random matrix theory",
-      "hf": "huggingface",
-      "ltsf": "long-term forecasting",
-      // common variants
-      "timeseries": "time series",
-      "time-series": "time series",
-      "multitask": "multi-task",
-      "noahs": "noah's",
-      // ML jargon
       "sharpness": "sharpness-aware",
-      "calib": "calibration",
-      "robust": "robustness"
+      "sam": "sharpness-aware",
+      "forecast": "forecasting",
+      "timeseries": "time series",
+      "hf": "huggingface",
+      "spotlight": "neurips spotlight",
+      "oral": "icml oral",
     };
 
-    const STOPWORDS = new Set([
-      "a","an","and","are","as","at","be","by","do","does","for","from","how","i","in",
-      "is","it","me","my","of","on","or","the","to","what","which","who","with","you",
-      "about","tell","explain","your",
-      // FR basics (optional)
-      "le","la","les","un","une","des","du","de","d","et","ou","que","quoi","comment","sur"
-    ]);
-
+    // -------------------------
+    // Text normalization + tokenization
+    // -------------------------
     const normalize = (s) => (s || "")
       .toLowerCase()
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // accents
-      .replace(/[^a-z0-9\s\-']/g, " ")
+      .replace(/[^a-z0-9\s\-]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
 
@@ -730,125 +609,50 @@
       return t.trim();
     };
 
-    // add unigrams + bigrams to improve "time series", "random matrix", etc.
     const tokenize = (s) => {
       const t = expandSynonyms(s);
       if (!t) return [];
-
-      const words = t
-        .split(" ")
-        .map(w => w.trim())
-        .filter(w => w.length >= 2 && !STOPWORDS.has(w));
-
-      const bigrams = [];
-      for (let i = 0; i < words.length - 1; i++) {
-        bigrams.push(words[i] + "_" + words[i+1]);
-      }
-      return words.concat(bigrams);
+      return t.split(" ").filter(w => w.length >= 2);
     };
 
-    // =========================================================
-    // 3) BM25 Retriever (local)
-    // =========================================================
-    const BM25 = (() => {
-      const k1 = 1.2;
-      const b = 0.75;
+    // Simple scoring: overlap with tags + title + answer keywords.
+    const scoreItem = (qTokens, item) => {
+      const hay = normalize(item.title + " " + item.tags.join(" ") + " " + item.answer);
+      let score = 0;
 
-      const docs = [];       // [{ item, tf: Map, len }]
-      const df = new Map();  // term -> doc frequency
-      let avgdl = 1;
+      for (const tok of qTokens) {
+        if (!tok) continue;
+        // boost exact tag match
+        if (item.tags.some(tag => normalize(tag) === tok)) score += 6;
+        // boost presence in title
+        if (normalize(item.title).includes(tok)) score += 4;
+        // general presence
+        if (hay.includes(tok)) score += 1;
+      }
 
-      const build = (KB) => {
-        docs.length = 0;
-        df.clear();
+      // Extra boost if query contains "what" + item looks like a definition
+      if (qTokens.includes("what") || qTokens.includes("quoi")) score += 0.5;
 
-        let totalLen = 0;
+      return score;
+    };
 
-        for (const item of KB) {
-          const text = [
-            item.title,
-            ...(item.tags || []),
-            item.answer
-          ].join(" ");
+    const retrieve = (query, k = 3) => {
+      const qTokens = tokenize(query);
+      const scored = KB.map(item => ({ item, score: scoreItem(qTokens, item) }))
+        .sort((a, b) => b.score - a.score);
 
-          const terms = tokenize(text);
-          const tf = new Map();
-          for (const term of terms) tf.set(term, (tf.get(term) || 0) + 1);
+      const best = scored[0];
+      if (!best || best.score < 3) return { hit: null, top: scored.slice(0, k) };
+      return { hit: best.item, top: scored.slice(0, k) };
+    };
 
-          const unique = new Set(terms);
-          for (const term of unique) df.set(term, (df.get(term) || 0) + 1);
-
-          const len = Math.max(1, terms.length);
-          totalLen += len;
-          docs.push({ item, tf, len });
-        }
-
-        avgdl = totalLen / Math.max(1, docs.length);
-      };
-
-      const idf = (term) => {
-        const N = docs.length;
-        const n = df.get(term) || 0;
-        return Math.log(1 + (N - n + 0.5) / (n + 0.5));
-      };
-
-      const score = (qTerms, doc) => {
-        let s = 0;
-
-        for (const t of qTerms) {
-          const f = doc.tf.get(t) || 0;
-          if (!f) continue;
-
-          const denom = f + k1 * (1 - b + b * (doc.len / avgdl));
-          s += idf(t) * (f * (k1 + 1)) / denom;
-        }
-
-        // Boosts: tag hit > title hit > body hit
-        const title = normalize(doc.item.title);
-        const tags = (doc.item.tags || []).map(normalize);
-
-        for (const t of qTerms) {
-          // exact tag token (unigram) boost
-          if (!t.includes("_") && tags.includes(t)) s += 0.8;
-          // title contains token boost
-          if (!t.includes("_") && title.includes(t)) s += 0.3;
-        }
-
-        return s;
-      };
-
-      const retrieve = (query, k = 3) => {
-        const qTerms = tokenize(query);
-        const scored = docs
-          .map(d => ({ item: d.item, score: score(qTerms, d) }))
-          .sort((a, b) => b.score - a.score);
-
-        const best = scored[0];
-        const threshold = 1.2; // adjust if needed
-
-        if (!best || best.score < threshold) {
-          return { hit: null, top: scored.slice(0, k), scored };
-        }
-        return { hit: best.item, top: scored.slice(0, k), scored };
-      };
-
-      return { build, retrieve };
-    })();
-
-    BM25.build(KB);
-
-    // =========================================================
-    // 4) UI helpers
-    // =========================================================
+    // -------------------------
+    // UI
+    // -------------------------
     const chat = document.getElementById("askromain-chat");
     const form = document.getElementById("askromain-form");
     const input = document.getElementById("askromain-input");
     const clearBtn = document.getElementById("askromain-clear");
-
-    if (!chat || !form || !input || !clearBtn) {
-      // fail silently if widget is not present on page
-      return;
-    }
 
     const escapeHTML = (s) => (s || "")
       .replaceAll("&", "&amp;")
@@ -869,23 +673,12 @@
 
     const renderLinks = (links) => {
       if (!links || !links.length) return "";
-      const items = links
-        .map(l => `<a href="${l.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(l.label)}</a>`)
-        .join(" · ");
+      const items = links.map(l => `<a href="${l.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(l.label)}</a>`).join(" · ");
       return `<div class="askromain-links mt-2">${items}</div>`;
     };
 
-    const renderSuggestions = (top) => {
-      const items = (top || [])
-        .filter(x => x && x.score > 0)
-        .slice(0, 4)
-        .map(x => `<li><b>${escapeHTML(x.item.title)}</b></li>`)
-        .join("");
-      return items ? `<ul class="mt-2 mb-2">${items}</ul>` : "";
-    };
-
     const answerQuery = (q) => {
-      const { hit, top } = BM25.retrieve(q, 4);
+      const { hit, top } = retrieve(q);
 
       if (hit) {
         addMsg("RI", `
@@ -896,17 +689,24 @@
         return;
       }
 
+      // fallback: show suggestions (top topics) without pretending
+      const suggestions = top
+        .filter(x => x.score > 0)
+        .slice(0, 3)
+        .map(x => `<li><b>${escapeHTML(x.item.title)}</b></li>`)
+        .join("");
+
       addMsg("RI", `
         <div>I’m not fully sure what you mean. Here are the closest topics I can answer:</div>
-        ${renderSuggestions(top)}
-        <div class="text-muted">Try rephrasing (e.g., “SAMformer optimization”, “random matrix theory multitask”, “time series foundation model”).</div>
+        <ul class="mt-2 mb-2">${suggestions || "<li><b>SAMformer</b></li><li><b>Mantis</b></li><li><b>Meta</b></li>"}</ul>
+        <div class="text-muted">Try rephrasing (e.g., “SAMformer optimization”, “Mantis downloads”, “NeurIPS spotlight topic”).</div>
       `);
     };
 
     const init = () => {
       addMsg("RI", `
-        <div>Hi — I’m a local Q&A widget (no external calls). Ask about my work, papers, or background.</div>
-        <div class="askromain-meta">Examples: “What is SAMformer?”, “NeurIPS spotlight?”, “What do you do at Meta?”, “Key papers and venues?”</div>
+        <div>Hi — I’m a local Q&A widget (no external calls). Ask about my research, papers, or current work.</div>
+        <div class="askromain-meta">Examples: “What is SAMformer?”, “What is Mantis?”, “What do you do at Meta?”</div>
       `);
     };
 
@@ -914,9 +714,9 @@
     document.querySelectorAll(".askromain-suggestion").forEach(btn => {
       btn.addEventListener("click", () => {
         const q = btn.textContent.trim();
-        if (!q) return;
         input.value = q;
         input.focus();
+        // Option: auto-submit
         addMsg("You", escapeHTML(q));
         answerQuery(q);
       });
@@ -941,29 +741,7 @@
 
     init();
   })();
-    </script>
-    <div class="row">
-    <div class="col-md-12">
-      <h3 class="section-title">Ask Romain</h3>
-
-      <div class="d-flex flex-wrap gap-2 mb-2">
-        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">What do you do at Meta?</button>
-        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">What is SAMformer?</button>
-        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">NeurIPS spotlight?</button>
-        <button type="button" class="btn btn-outline-primary btn-sm askromain-suggestion">Key papers and venues?</button>
-      </div>
-
-      <div id="askromain-chat" class="askromain-chat"></div>
-
-      <form id="askromain-form" class="mt-2">
-        <div class="input-group">
-          <input id="askromain-input" type="text" class="form-control" placeholder="Ask a question..." autocomplete="off">
-          <button type="submit" class="btn btn-primary">Send</button>
-          <button id="askromain-clear" type="button" class="btn btn-outline-secondary">Clear</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  </script>
   </body>
 </html>
 
